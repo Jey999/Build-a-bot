@@ -1,28 +1,56 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <main>
+      <div class="home">
+        <button @click="surprise()">surprise!</button>
+      <rude style="visibility: collapse;" id="rude"/>
+      <robot/>
+    <HomePage />
+    </div>
+    </main>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue';
+import HomePage from './home/HomePage.vue';
+import robot from './components/robot.vue';
+import rude from './components/hello.vue';
 
 export default {
   name: 'App',
   components: {
-    HelloWorld,
+    HomePage,
+    robot,
+    rude,
+  },
+  methods: {
+    surprise() {
+      if (document.getElementById('rude').style.visibility === 'collapse') {
+        document.getElementById('rude').setAttribute('style', 'visibility:visible');
+      } else if (document.getElementById('rude').style.visibility === 'visible') {
+        document.getElementById('rude').setAttribute('style', 'visibility:collapse');
+      }
+    },
   },
 };
 </script>
 
 <style>
+body {
+  background: linear-gradient(to bottom, #555, #999);
+  background-attachment: fixed;
+}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+}
+main {
+  margin: 0 auto;
+  padding: 30px;
+  background-color: white;
+  width: 1024px;
+  min-height:300px;
+}
+.home {
   text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
 }
 </style>
